@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'URLController@index');
+Route::get('/{hash}', 'URLController@visit');
