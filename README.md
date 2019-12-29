@@ -4,7 +4,7 @@ Laravel URL Shortner
 [![Build Status](https://travis-ci.org/Braunson/laravel-short-url-generator.svg?branch=master)](https://travis-ci.org/Braunson/laravel-short-url-generator)
 [![codecov](https://codecov.io/gh/Braunson/laravel-short-url-generator/branch/master/graph/badge.svg)](https://codecov.io/gh/Braunson/laravel-short-url-generator)
 
-A simple url shortner that makes use of Vue.js, Tailwind CSS and is built upon Laravel 6.x. This was build just for fun to learn Tailwind CSS.
+A simple url shortner that makes use of Vue.js, Tailwind CSS and is built upon Laravel 6.x. This was built just for fun to learn Tailwind CSS.
 
 
 Contributing
