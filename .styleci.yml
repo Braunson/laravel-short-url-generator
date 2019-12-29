@@ -6,5 +6,8 @@ php:
     not-name:
       - index.php
       - server.php
-js: false
-css: false
+js:
+  finder:
+    not-name:
+      - webpack.mix.js
+css: true

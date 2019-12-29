@@ -1,12 +1,24 @@
+dist: bionic
+
 language: php
 
 php:
   - 7.3
   - 7.4
 
+services:
+  - mysql
+
 before_script:
+  - cp .env.travis .env
+  - sudo mysql -e 'create database testing;'
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
+  - php artisan key:generate
+  - php artisan migrate --no-interaction -vvv
 
 script:
   - vendor/bin/phpunit --coverage-clover clover.xml
+
+after_script:
+  - bash <(curl -s https://codecov.io/bash)
