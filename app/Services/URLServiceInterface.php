@@ -7,9 +7,9 @@ interface URLServiceInterface
     /**
      * Generate a hash for a given string
      *
-     * @param String $url
+     * @param string $url
      */
-    public function generate($url);
+    public function generate(string $url);
 
     /**
      * Create a new URL
@@ -48,9 +48,9 @@ interface URLServiceInterface
     public function update($hash, array $post_data);
 
     /**
-     * Adds a new view to the URL
+     * Adds a new visit to the URL
      *
-     * @param string $hash
+     * @param URL $url
      */
-    public function addView($hash);
+    public function recordVisit($url);
 }

@@ -15,9 +15,9 @@ class URL extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'   => $this->id,
             'url'  => $this->url,
             'hash' => $this->hash,
+            'link' => url($this->hash)
         ];
     }
 }

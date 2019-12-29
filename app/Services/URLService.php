@@ -28,22 +28,23 @@ class URLService implements URLServiceInterface
     /**
      * Create a new URL
      *
-     * @param array $post_data
+     * @param Array $post_data
      * @return Collection
      */
     public function create($post_data)
     {
-        $hash = $this->hashids->encode($post_data->url);
+        // Create the URL and hash it
+        $url = URL::firstOrCreate($post_data);
+        $url->hash = $this->hashids->encode($url->id);
+        $url->save();
 
-        return URL::findOrFirst(array_merge($post_data, [
-            'hash' => $hash
-        ]));
+        return $url;
     }
 
     /**
      * Get's a post by it's Hash
      *
-     * @param string
+     * @param String
      * @return Collection
      */
     public function get($hash)
@@ -83,12 +84,12 @@ class URLService implements URLServiceInterface
     }
 
     /**
-     * Increments the views column
+     * Increments the visits column
      *
-     * @param string $hash
+     * @param URL $hash
      */
-    public function addView($hash)
+    public function recordVisit($url)
     {
-        URL::whereHash($hash)->increment('views');
+        $url->increment('visits');
     }
 }

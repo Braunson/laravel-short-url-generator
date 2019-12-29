@@ -16,7 +16,7 @@ class CreateUrlsTable extends Migration
         Schema::create('urls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('url');
-            $table->string('hash');
+            $table->string('hash')->nullable();
             $table->unsignedInteger('visits')->default(0);
             $table->timestamps();
         });

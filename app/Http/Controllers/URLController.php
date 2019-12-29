@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\URL;
 use Illuminate\Http\Request;
 use App\Services\URLServiceInterface;
 use App\Http\Resources\URL as URLResource;
 use App\Http\Requests\CreateURLFormRequest;
-use App\Http\Requests\RetrieveURLFormRequest;
 
 class URLController extends Controller
 {
@@ -43,20 +43,19 @@ class URLController extends Controller
         $url = $this->url->create($request->validated());
 
         return response()->json(
-            new LinkResource($url)
+            new URLResource($url)
         );
     }
 
     /**
      * Visit the decoded URL for the hahs given
      *
-     * @param RetrieveURLFormRequest $request
-     * @param URL $url
+     * @param  URL $url
      * @return Redirect
      */
-    public function visit(RetrieveURLFormRequest $request, URL $url)
+    public function visit(URL $url)
     {
-        $this->url->addView($url->validated()->hash);
+        $this->url->recordVisit($url);
 
         return redirect()->to($url->url);
     }

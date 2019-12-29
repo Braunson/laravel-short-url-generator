@@ -12,4 +12,4 @@
 */
 
 Route::get('/', 'URLController@index');
-Route::get('/{hash}', 'URLController@visit');
+Route::get('/{url}', 'URLController@visit');
